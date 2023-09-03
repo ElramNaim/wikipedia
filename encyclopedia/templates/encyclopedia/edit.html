@@ -1,0 +1,15 @@
+{% extends "encyclopedia/layout.html" %} {% block title %} Edit {%endblock %}
+{%block body %}
+<h1>Edit</h1>
+<form
+  action="{% url 'edit' title=title%}"
+  method="post"
+  class="form horizontal well"
+>
+  {% csrf_token %}{{ form.as_p }}
+  <input type="submit" value="Save changes" />
+</form>
+{% if bool %}
+<br />
+<h2 style="color: red">Content allready exist !</h2>
+{% endif %} {% endblock %}
